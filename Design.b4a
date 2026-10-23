@@ -1,0 +1,215 @@
+﻿Version=7.3
+NumberOfModules=6
+Module1=sends
+Module2=category2
+Module3=codes
+Module4=categpory
+Module5=HttpJob
+Module6=HttpUtils2Servis
+Build1=Default,hhhh.hhhh
+ManifestCode='This code will be applied to the manifest file during compilation.~\n~'You do not need to modify it in most cases.~\n~'See this link for for more information: https://www.b4x.com/forum/showthread.php?p=78136~\n~AddManifestText(~\n~<uses-sdk android:minSdkVersion="5" android:targetSdkVersion="19"/>~\n~<supports-screens android:largeScreens="true" ~\n~    android:normalScreens="true" ~\n~    android:smallScreens="true" ~\n~    android:anyDensity="true"/>)~\n~SetApplicationAttribute(android:icon, "@drawable/icon")~\n~SetApplicationAttribute(android:label, "$LABEL$")~\n~'End of default text.~\n~SetApplicationAttribute(android:theme, "@android:style/Theme.Holo.Light")~\n~
+IconFile=
+NumberOfFiles=19
+File1=1.png
+File2=2.png
+File3=3.png
+File4=4.png
+File5=5.png
+File6=6.png
+File7=a.bal
+File8=back_up2.png
+File9=category.bal
+File10=category2.bal
+File11=font.ttf
+File12=g.png
+File13=i.png
+File14=menu.png
+File15=sidebar.png
+File16=tel.png
+File17=tops.png
+File18=txt.png
+File19=txt2.png
+NumberOfLibraries=6
+Library1=core
+Library2=base64image
+Library3=okhttp
+Library4=reflection
+Library5=stringutils
+Library6=arialib
+@EndOfDesignText@
+#Region  Project Attributes 
+	#ApplicationLabel:Designer
+	#VersionCode: 12
+	#VersionName: 12
+	'SupportedOrientations possible values: unspecified, landscape or portrait.
+	#SupportedOrientations: portrait
+	#CanInstallToExternalStorage: False
+#End Region
+
+#Region  Activity Attributes 
+	#FullScreen: False
+	#IncludeTitle: False
+#End Region
+
+Sub Process_Globals
+	'These global variables will be declared once when the application starts.
+	'These variables can be accessed from all modules.
+	Private timers As Timer
+End Sub
+
+Sub Globals
+	Private tops As ImageView
+	Private sidebar As ImageView
+	Private toplabel As Label
+	Private toplabel As Label
+	Private Lists As ScrollView
+	Private img,img2 As ImageView
+	Private i1,i2,i3 As ImageView
+	Dim Intents As Intent
+	Private i As Int=0
+
+	Private Panel As Panel
+	Private logo As ImageView
+End Sub
+
+Sub Activity_Create(FirstTime As Boolean)
+	'Do not forget to load the layout file created with the visual designer. For example:
+	Activity.LoadLayout("a")
+	Panel.Left=0
+	Panel.Top=0
+	Panel.Height=100%y
+	Panel.Width=100%x
+	
+	logo.Width=70%x
+	logo.Height=logo.Width
+	logo.Top=(100%y/2)-(logo.Height/2)
+	logo.Left=(100%x/2)-(logo.Width/2)
+	logo.Bitmap=LoadBitmap(File.DirAssets,"logo/a1.png")
+	
+	tops.Left=0
+	tops.Top=0
+	tops.Width=100%x
+	tops.Height=74dip
+	tops.Gravity=Gravity.FILL
+	tops.Bitmap=LoadBitmapSample(File.DirAssets,"tops.png",tops.Width,tops.Height)
+	
+	sidebar.Top=tops.Top+3dip
+	sidebar.Height=tops.Height-10dip
+	sidebar.Width=sidebar.Height
+	sidebar.Left=100%x-sidebar.Width-5dip
+	
+	i1.Width=25%x
+	i1.Height=i1.Width
+	i1.Top=100%y-i1.Height-10dip
+	i1.Left=5%x
+	
+	i2.Width=i1.Width
+	i2.Height=i1.Width
+	i2.Top=i1.Top
+	i2.Left=i1.Left+i1.Width+5dip
+	
+	i3.Width=i1.Width
+	i3.Height=i1.Width
+	i3.Top=i1.Top
+	i3.Left=i2.Left+i1.Width+5dip
+	
+	toplabel.Top=0
+	toplabel.Width=100%x
+	toplabel.Height=tops.Height
+	toplabel.Left=0
+	toplabel.Gravity=Gravity.CENTER
+	toplabel.Text="Designer"
+	
+	Lists.Left=0
+	Lists.Top=tops.Height-3dip
+	Lists.Width=100%x
+	Lists.Height=100%y-tops.Height
+	
+	
+	img.Initialize("")
+	Lists.Panel.AddView(img,3%x,10dip,94%x,94%x/2)
+	img.Gravity=Gravity.FILL
+	img.Bitmap=LoadBitmapSample(File.DirAssets,"1.png",img.Width,img.Height)
+	
+	img2.Initialize("")
+	Lists.Panel.AddView(img2,3%x,img.Top+img.Height+5dip,94%x,94%x/2)
+	img2.Gravity=Gravity.FILL
+	img2.Bitmap=LoadBitmapSample(File.DirAssets,"2.png",img.Width,img.Height)
+	
+	img.Initialize("")
+	Lists.Panel.AddView(img,3%x,img2.Top+img2.Height+5dip,94%x,94%x/2)
+	img.Gravity=Gravity.FILL
+	img.Bitmap=LoadBitmapSample(File.DirAssets,"3.png",img.Width,img.Height)
+	
+	img2.Initialize("")
+	Lists.Panel.AddView(img2,3%x,img.Top+img.Height+5dip,94%x,94%x/2)
+	img2.Gravity=Gravity.FILL
+	img2.Bitmap=LoadBitmapSample(File.DirAssets,"4.png",img.Width,img.Height)
+	
+	img.Initialize("")
+	Lists.Panel.AddView(img,3%x,img2.Top+img2.Height+5dip,94%x,94%x/2)
+	img.Gravity=Gravity.FILL
+	img.Bitmap=LoadBitmapSample(File.DirAssets,"5.png",img.Width,img.Height)
+	
+	img2.Initialize("")
+	Lists.Panel.AddView(img2,3%x,img.Top+img.Height+5dip,94%x,94%x/2)
+	img2.Gravity=Gravity.FILL
+	img2.Bitmap=LoadBitmapSample(File.DirAssets,"6.png",img.Width,img.Height)
+	
+	Lists.Panel.Height=img2.Top+img2.Height+25%x+10dip
+	
+	timers.Initialize("timers",100)
+	timers.Enabled=True
+	
+	
+End Sub
+
+Sub Activity_Resume
+
+End Sub
+
+Sub Activity_Pause (UserClosed As Boolean)
+
+End Sub
+
+Sub sidebar_Click
+	StartActivity(categpory)
+End Sub
+
+Sub i1_Click
+	ProgressDialogShow2("در حال گرفتن شماره فروشنده",False)
+	Dim ii As Intent
+	ii.Initialize(ii.ACTION_VIEW, "tel:09035266499")
+	StartActivity(ii)
+	ProgressDialogHide
+End Sub
+Sub i2_Click
+	Try
+		Dim j As AriaLib
+		j.OpenInstaProfile("nik._studio")
+	Catch
+		Intents.Initialize(Intents.ACTION_VIEW,"https://www.instagram.com/nik._studio")
+		StartActivity(Intents)
+	End Try'==========================================
+End Sub
+Sub i3_Click
+	Try
+		Intents.initialize(Intents.action_view,"tg://resolve?domain=alinik9229")
+		StartActivity(Intents)
+	Catch
+		ToastMessageShow("اشکال در اتصال به تلگرام",False)
+	End Try'==========================================
+End Sub
+
+Sub timers_Tick
+	i=i+1
+	If i=47 Then timers.Interval=200
+	If i>53 Then
+		Panel.Visible=False
+		timers.Enabled=False
+		Return	
+	End If
+	Sleep(1)
+	logo.Bitmap=LoadBitmapSample(File.DirAssets,"logo/a"&i&".png",logo.Width,logo.Height)
+
+End Sub
